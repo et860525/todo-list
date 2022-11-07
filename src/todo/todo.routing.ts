@@ -1,12 +1,9 @@
-import express, { Router, Request, Response, NextFunction } from 'express';
-import * as repo from '../database/sqlite';
+import express, { Router } from 'express';
+import * as validator from '../validator/todo.validator';
+import * as controller from './todo.controller';
 
 const router: Router = express.Router();
 
-router.get('/', async (req: Request, res: Response) => {
-  const tasks = await repo.readRow();
-  console.log(tasks);
-  res.render('index', { title: 'Todo List', message: 'Hello World', tasks: tasks });
-});
+router.route('/').get(controller.getTasks).post(validator.createTodo, controller.createTask);
 
 module.exports = router;

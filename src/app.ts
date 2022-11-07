@@ -11,6 +11,7 @@ const app: Express = express();
 const env = process.env.NODE_ENV;
 const port = process.env.PORT;
 
+// TODO: Add auto create db file methods
 createTable();
 
 app.use(cookieParser());

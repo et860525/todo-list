@@ -15,9 +15,20 @@ export function createTable() {
   db.run('CREATE TABLE IF NOT EXISTS task (name TEXT, body TEXT, completed INTEGER)');
 }
 
-export function insertRow(name: string, body: string) {
+export async function insertRow(name: string, body: string) {
   console.log('Insert task');
-  db.run(`INSERT INTO task(name, body, completed) VALUES (?,?,?)`, [name, body, 0]);
+  db.run('INSERT INTO task(name, body, completed) VALUES (?,?,?)', [name, body, 0], (err) => {
+    if (err) return console.log(err.message);
+    console.log('Insert OK');
+  });
+  // return new Promise((resolve, reject) => {
+  //   db.serialize(() => {
+  //     db.run('INSERT INTO task(name, body, completed) VALUES (?,?,?)', [name, body, 0], (err) => {
+  //       if (err) reject(err);
+  //       resolve('Insert OK');
+  //     });
+  //   });
+  // });
 }
 
 export async function readRow() {
