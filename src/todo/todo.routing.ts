@@ -5,5 +5,6 @@ import * as controller from './todo.controller';
 const router: Router = express.Router();
 
 router.route('/').get(controller.getTasks).post(validator.createTodo, controller.createTask);
+router.route('/delete/:id').get(controller.deleteTask);
 
 module.exports = router;

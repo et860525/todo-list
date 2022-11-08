@@ -52,3 +52,18 @@ export async function readRow() {
   //   });
   // });
 }
+
+export async function deleteRow(id: string) {
+  console.log('Delete task');
+  db.get('SELECT * FROM task WHERE rowid= ?', id, (err, row) => {
+    if (err) return console.log(err.message);
+    if (!row) {
+      return console.log('Task not exist');
+    } else {
+      db.run('DELETE FROM task WHERE rowid = ?', id, (err) => {
+        if (err) return console.log(err.message);
+        console.log('Delete OK');
+      });
+    }
+  });
+}

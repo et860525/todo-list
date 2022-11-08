@@ -24,3 +24,10 @@ export async function createTask(req: Request, res: Response, next: NextFunction
     res.redirect('/');
   }
 }
+
+export async function deleteTask(req: Request, res: Response) {
+  const id = req.params.id;
+  const task = await repo.deleteRow(id);
+  console.log(task);
+  res.redirect('/');
+}

@@ -11,16 +11,19 @@ html
       if !tasks.length
         h2.text-center No task now...
       else 
-        .card.mx-auto(style='width: 18rem;')
-          ul.list-group.list-group-flush
+        .card.mx-auto(style='width: 25rem;')
+          ul.list-group
             each task in tasks 
-              li.list-group-item= task.name
+              li.list-group-item.d-flex.justify-content-between
+                div
+                  input.form-check-input.me-1(type='checkbox' id='Checkbox' + task.id value='')
+                  label.form-check-label(for='Checkbox' + task.id)= task.name
+                button.btn-close(type='button', aria-label='Close')
       if errors
         each error in errors 
-          <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+          .alert.alert-danger.alert-dismissible.fade.show.mt-2(role='alert')
             = error.msg
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>          
+            button.btn-close(type='button', data-bs-dismiss='alert', aria-label='Close')
       form(method='POST')
         .mb-3
           label.form-label(for='taskInput') Task:
