@@ -67,3 +67,13 @@ export async function deleteRow(id: string) {
     }
   });
 }
+
+export async function patchTaskCompleted(id: string, value: string) {
+  console.log('Change task completed');
+  db.serialize(() => {
+    db.run('UPDATE task SET completed = ? WHERE id = ?', [value, id], (err) => {
+      if (err) return console.log(err.message);
+      console.log('Change OK');
+    });
+  });
+}

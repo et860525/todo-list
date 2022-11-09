@@ -31,3 +31,8 @@ export async function deleteTask(req: Request, res: Response) {
   console.log(task);
   res.redirect('/');
 }
+
+export async function updateTaskCompleted(req: Request, res: Response) {
+  const id = req.params.id;
+  res.redirect('/');
+}
