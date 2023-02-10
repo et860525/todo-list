@@ -20,9 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.set('view engine', 'pug');
 
-const todoRouter = require('./todo/todo.routing');
-app.use('/', todoRouter);
+import taskRouter from './todo/todo.routing';
+app.use('/', taskRouter);
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port} in ${env}`);
+  console.log(
+    `[server]: Server is running at http://localhost:${port} in ${env}`
+  );
 });
