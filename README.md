@@ -2,6 +2,10 @@
 
 It is a simple project for the todo list.
 
+# Environments
+
+You must add the `.env` file and then contain `PORT=3000`.
+
 # Stack
 
 - [Express](https://expressjs.com/)

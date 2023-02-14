@@ -17,8 +17,9 @@ html
               li.list-group-item.d-flex.justify-content-between
                 div
                   input.form-check-input.me-1(type='checkbox' id='Checkbox' + task.id onclick=`handleClick(${task.id})`)
-                  label.form-check-label(for='Checkbox' + task.id)= task.name
-                button.btn-close(type='button', data-bs-toggle='modal', data-bs-target='#deleteModal', data-bs-id=task.id, data-bs-name=task.name)
+                  label.form-check-label.fw-bold(for='Checkbox' + task.id)= task.name
+                  p.my-2.ps-4.text-break= task.body
+                button.btn-close.fw-normal(type='button', data-bs-toggle='modal', data-bs-target='#deleteModal', data-bs-id=task.id, data-bs-name=task.name)
         #deleteModal.modal.fade(tabindex='-1', aria-labelledby='deleteModalLabel', aria-hidden='true')
           .modal-dialog
             .modal-content
